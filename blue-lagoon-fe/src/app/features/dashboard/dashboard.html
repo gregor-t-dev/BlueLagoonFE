@@ -1,0 +1,6 @@
+<app-header></app-header>
+<div class="grid">
+  @for (module of modules; track module.id) {
+    <app-module-card [module]="module" />
+  }
+</div>

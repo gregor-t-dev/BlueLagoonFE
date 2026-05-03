@@ -1,0 +1,134 @@
+@use '@angular/material' as mat;
+@use 'theme-colors' as custom_theme;
+@use 'sass:map';
+$custom-colors: (
+  light: (
+    mat-card: #63c56b8c,
+    on-mat-card: blue
+  ),
+  dark: (
+    mat-card: #7064a3,
+    on-mat-card: grey
+  ),
+);
+
+@mixin apply-custom-colors($theme-mode) {
+  $colors: map.get($custom-colors, $theme-mode);
+  @each $key, $value in $colors {
+    --my-custom-#{$key}: #{$value};
+  }
+}
+
+$my-typography: (
+  brand-family: 'Roboto, "Helvetica Neue", sans-serif',
+  plain-family: 'Roboto, "Helvetica Neue", sans-serif',
+);
+
+$light-theme: mat.define-theme((
+  color: (
+    primary: custom_theme.$primary-palette,
+    tertiary: custom_theme.$tertiary-palette,
+    theme-type: light,
+  ),
+  typography: $my-typography,
+  density: (
+    scale: 0
+  )
+));
+
+$dark-theme: mat.define-theme((
+  color: (
+    primary: custom_theme.$primary-palette,
+    tertiary: custom_theme.$tertiary-palette,
+    theme-type: dark,
+  ),
+  typography: $my-typography,
+  density: (
+    scale: 0
+  )
+));
+
+.light-lagoon {
+  color-scheme: light;
+  @include apply-custom-colors(light);
+  @include mat.theme((color: custom_theme.$primary-palette));
+}
+
+.dark-lagoon {
+  color-scheme: dark;
+  @include apply-custom-colors(dark);
+  @include mat.theme((color: custom_theme.$primary-palette));
+}
+
+.tertiary {
+  @include mat.theme((color: custom_theme.$tertiary-palette));
+  //@include mat.theme-overrides((corner-full: 5px));
+  @include mat.button-overrides((
+    filled-container-shape: 5px,
+    outlined-container-shape: 5px,
+    protected-container-shape: 5px,
+    text-container-shape: 5px));
+}
+
+.secondary {
+  @include mat.theme((color: custom_theme.$secondary-palette));
+  //@include mat.theme-overrides((corner-full: 5px));
+  @include mat.button-overrides((
+    filled-container-shape: 5px,
+    outlined-container-shape: 5px,
+    protected-container-shape: 5px,
+    text-container-shape: 5px));
+}
+
+.error {
+  @include mat.theme((color: custom_theme.$error-palette));
+  //@include mat.theme-overrides((corner-full: 5px));
+  @include mat.button-overrides((
+    filled-container-shape: 5px,
+    outlined-container-shape: 5px,
+    protected-container-shape: 5px,
+    text-container-shape: 5px));
+}
+
+html {
+    @include mat.toolbar-overrides((
+      container-background-color: var(--mat-sys-primary),
+      container-text-color: var(--mat-sys-on-inverse-primary),
+    ));
+
+    @include mat.card-overrides((
+      outlined-container-color: var(--my-custom-mat-card),
+      elevated-container-elevation: var(--my-custom-on-mat-card)
+    ));
+
+    @include mat.button-overrides((
+      filled-container-shape: 5px,
+      outlined-container-shape: 5px,
+      protected-container-shape: 5px,
+      text-container-shape: 5px));
+
+    @media (prefers-contrast: more) {
+    @include custom_theme.high-contrast-overrides('light');
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* .settings-menu {
+  @include mat.menu-overrides((
+    container-shape: 5px,
+    divider-color: red,
+    container-color: var(--mat-fab-small-container-color, var(--mat-sys-primary-container)),
+    item-icon-color: green
+  ));
+}
+
+.theme-toggle-button {
+  @include mat.button-toggle-overrides((
+    selected-state-background-color: #1DA13E,
+    background-color: rgb(241, 241, 241)
+  ));
+
+}
+ */

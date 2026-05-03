@@ -1,0 +1,30 @@
+<mat-toolbar class="toolbar">
+  <span class="toolbar-title">Blue Lagoon</span>
+  <span class="spacer"></span>
+  <button matMiniFab><mat-icon>logout</mat-icon></button>
+  <button matMiniFab [matMenuTriggerFor]="settingsMenu"><mat-icon>settings</mat-icon></button>
+  <mat-menu #settingsMenu="matMenu" class="settings-menu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+
+    <mat-divider></mat-divider>
+    <div class="menu-section-label">Motyw</div>
+    <div class="menu-toggle-container">
+      <mat-button-toggle-group
+        hideSingleSelectionIndicator="true"
+        class="theme-toggle-button"
+        (change)="themeService.setMode($event.value)"
+        [value]="themeService.mode()"
+      >
+        <mat-button-toggle value="light" (click)="$event.stopPropagation()">
+          Light
+        </mat-button-toggle>
+        <mat-button-toggle value="dark" (click)="$event.stopPropagation()">
+          Dark
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,36 @@
+.module-card {
+  height: 100%;
+  overflow: visible;
+}
+
+.icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.tile {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile mat-card {
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tile mat-card:hover {
+  transform: translateY(-2px);
+}

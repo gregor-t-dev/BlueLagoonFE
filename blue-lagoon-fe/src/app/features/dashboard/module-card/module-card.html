@@ -1,0 +1,19 @@
+<a
+  matRipple
+  [matRippleRadius]="60"
+  [matRippleUnbounded]="true"
+  [matRippleCentered]="true"
+  class="tile module-card"
+>
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ module().displayName.toLocaleUpperCase() }}</mat-card-title>
+    </mat-card-header>
+    <div>
+      <mat-icon class="icon" aria-hidden="false" [fontIcon]="module().icon"></mat-icon>
+    </div>
+    <mat-card-content style="flex: 1">
+      {{ module().description }}
+    </mat-card-content>
+  </mat-card>
+</a>

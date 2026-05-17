@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDivider } from '@angular/material/divider';
 import { ThemeService } from '../../../core/services/theme.service';
-
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-header',
   imports: [
@@ -16,6 +16,7 @@ import { ThemeService } from '../../../core/services/theme.service';
     MatMenuModule,
     MatButtonToggleModule,
     MatDivider,
+    NgOptimizedImage,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',

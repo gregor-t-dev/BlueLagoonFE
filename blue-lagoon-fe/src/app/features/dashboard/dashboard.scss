@@ -1,4 +1,4 @@
-.grid {
+.module-cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
@@ -7,3 +7,15 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.login-card-container {
+  display: grid;
+  height: calc(100vh - 64px);
+  justify-items: center;
+  grid-template-rows: 1fr auto 2fr;
+}
+
+.login-card-container app-login-card {
+  grid-row: 2;
+}
+

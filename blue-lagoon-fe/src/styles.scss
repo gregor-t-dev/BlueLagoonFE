@@ -3,7 +3,7 @@
 @use 'sass:map';
 $custom-colors: (
   light: (
-    mat-card: #63c56b8c,
+    mat-card: #6eb1dd8c,
     on-mat-card: blue
   ),
   dark: (
@@ -102,10 +102,10 @@ html {
     ));
 
     @include mat.button-overrides((
-      filled-container-shape: 5px,
-      outlined-container-shape: 5px,
-      protected-container-shape: 5px,
-      text-container-shape: 5px));
+      filled-container-shape: 15px,
+      outlined-container-shape: 15px,
+      protected-container-shape: 15px,
+      text-container-shape: 15px));
 
     @media (prefers-contrast: more) {
     @include custom_theme.high-contrast-overrides('light');

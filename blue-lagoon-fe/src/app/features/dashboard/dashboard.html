@@ -1,6 +1,15 @@
 <app-header></app-header>
-<div class="grid">
-  @for (module of modules; track module.id) {
-    <app-module-card [module]="module" />
-  }
-</div>
+
+@if (!isAuthenticated()) {
+  <div class="login-card-container">
+    <app-login-card></app-login-card>
+  </div>
+} @else {
+  <div class="module-cards-container">
+    @for (module of modules; track module.id) {
+      <app-module-card [module]="module" />
+    } @empty {
+      Nie posiadasz uprawnień do modułów
+    }
+  </div>
+}

@@ -1,12 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('blue-lagoon-fe');
+export class App implements OnInit {
+  private authService = inject(AuthService);
+
+  async ngOnInit() {
+    await this.authService.runLoginSequence();
+  }
 }

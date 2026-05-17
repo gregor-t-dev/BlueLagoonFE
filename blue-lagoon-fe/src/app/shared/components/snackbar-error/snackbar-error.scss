@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+.snack-icon {
+  @include mat.icon-overrides((color: var(--mat-sys-error)));
+}
+
+.snack-message {
+  color: var(--mat-sys-error);
+}
+
+.snack-action-button {
+  @include mat.button-overrides((
+    filled-container-color: var(--mat-sys-error)
+  ));
+}
